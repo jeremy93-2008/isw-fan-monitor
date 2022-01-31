@@ -1,20 +1,20 @@
-const WebpackShellPlugin = require('webpack-shell-plugin-next');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const path = require("path");
-const { node } = require('webpack');
+const WebpackShellPlugin = require('webpack-shell-plugin-next')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const path = require('path')
+const CopyPlugin = require('copy-webpack-plugin')
 
 module.exports = {
-    mode: "development",
+    mode: 'development',
     entry: {
-        main: "./src/main/main.js",
-        preload: "./src/main/preload.js",
-        webapp: "./src/app/app.tsx"
+        main: './src/main/main.js',
+        preload: './src/main/preload.js',
+        webapp: './src/app/index.tsx',
     },
     devtool: 'source-map',
-    target: "electron-main",
+    target: 'electron-main',
     output: {
         filename: '[name].js',
-        path: path.resolve(__dirname, "dist")
+        path: path.resolve(__dirname, 'dist'),
     },
     module: {
         rules: [
@@ -22,26 +22,26 @@ module.exports = {
                 test: /\.tsx?$/,
                 use: 'ts-loader',
                 exclude: /node_modules/,
-              },
-        ]
+            },
+        ],
     },
     resolve: {
-        extensions: ['.tsx', '.ts', '.js']
+        extensions: ['.tsx', '.ts', '.js'],
     },
-    plugins: 
-    [
+    plugins: [
         new WebpackShellPlugin({
             onBuildEnd: {
-                scripts: ["npm run start:electron"],
+                scripts: ['npm run start:electron'],
                 blocking: false,
-                parallel: true
-            }
+                parallel: true,
+            },
         }),
-        new HtmlWebpackPlugin(
-            {
-                inject: false,
-                template: "./public/index.html"    
-            }
-        )
+        new HtmlWebpackPlugin({
+            inject: false,
+            template: './public/index.html',
+        }),
+        new CopyPlugin({
+            patterns: [{ from: './src/scripts/readEC.py', to: 'readEC.py' }],
+        }),
     ],
 }

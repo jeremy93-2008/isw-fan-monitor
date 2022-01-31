@@ -1,4 +1,9 @@
-import React from "react"
-import { render } from "react-dom"
+import React, { useContext } from 'react'
+import { FanContext, IFanContext } from './provider/FanProvider'
 
-render(<div>Hola mundo jajajaja</div>, document.getElementById("app"))
+export function App() {
+    const context = useContext(FanContext)
+    return (
+        <div>{context ? (context as IFanContext).realtime_cpu_temp : null}</div>
+    )
+}
