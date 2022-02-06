@@ -15,7 +15,7 @@ export function FanProvider(props: { children: any }) {
     const [info, setInfo] = useState({})
 
     useEffect(() => {
-        ;(window as any).api.getMSIInfo()
+        //;(window as any).api.getMSIInfo()
         const interval = setInterval(() => {
             const value = (
                 document.getElementById('MSIInfo') as HTMLInputElement
