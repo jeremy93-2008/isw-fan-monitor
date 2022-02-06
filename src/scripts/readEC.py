@@ -38,7 +38,7 @@ try:
             if int(fanr_gpu) != 0:
                 fanr_gpu = 478000//int(fanr_gpu)
             time.sleep(2)
-            print(str(temp_cpu)+'°C,'+str(fans_cpu)+'%,' + str(fanr_cpu)+'RPM;' + str(temp_gpu)+'°C,' + str(fans_gpu)+'%,' + str(fanr_gpu)+'RPM', file=sys.stdout)
+            print(str(temp_cpu)+'°C,'+str(fans_cpu)+'%,' + str(fanr_cpu)+' RPM;' + str(temp_gpu)+'°C,' + str(fans_gpu)+'%,' + str(fanr_gpu)+' RPM', file=sys.stdout)
 except:
     print("nada", file=sys.stdout)
         
