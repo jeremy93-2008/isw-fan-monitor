@@ -3,3 +3,5 @@ node_modules
 .idea
 .parcel-cache
 dist
+build
+isw-fan-monitor-linux-x64
