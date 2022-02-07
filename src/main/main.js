@@ -9,10 +9,8 @@ function createWindow() {
         height: 600,
         maximizable: false,
         resizable: false,
-        autoHideMenuBar: false,
+        autoHideMenuBar: true,
         webPreferences: {
-            nodeIntegration: true,
-            enableRemoteModule: true, //this must be true
             preload: path.join(__dirname, 'preload.js'),
         },
     })

@@ -42,7 +42,7 @@
   },
   "build": {
     "linux": {
-      "target": "AppImage",
+      "target": "zip",
       "asar": false,
       "icon": "./icon.png"
     }
