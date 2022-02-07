@@ -6,5 +6,8 @@ For now this MVP, it is only a simple fan monitor, but it will be extended to in
 
 This Fan Monitor UI is developed using [Electron](https://electronjs.org/), and was tested in Manjaro and Arch Linux with Gnome DE.
 
+Download Zip Portable:
+https://github.com/jeremy93-2008/isw-fan-monitor/releases/tag/v1.0.0
+
 Screenshots:
 ![Fan Monitor UI](./screenshot.png)   
