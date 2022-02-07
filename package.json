@@ -8,17 +8,9 @@
     "start:webpack": "webpack --watch --config webpack.dev.config.js",
     "start:electron": "electron ./dist/main.js",
     "build:webpack": "webpack --config webpack.prod.config.js",
-    "build": "npm run build:webpack && cp package.json dist/package.json && cp README.md dist/README.md && cp LICENSE dist/LICENSE && npx electron-packager ./dist",
-    "package": "npx electron-installer-snap --src=./isw-fan-monitor-linux-x64 --confinement=strict"
+    "build": "rm -rf ./dist && npm run build:webpack && cp package.json dist/package.json && cp README.md dist/README.md && cp LICENSE dist/LICENSE",
+    "package": "npm run build && cd ./dist && npm install && electron-builder build -l"
   },
-  "repository": "https://github.com/electron/electron-quick-start",
-  "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
-  ],
   "author": "Jeremy Auvray",
   "license": "MPL v2.0",
   "devDependencies": {
@@ -27,6 +19,8 @@
     "copy-webpack-plugin": "^10.2.3",
     "css-loader": "^6.6.0",
     "electron": "^16.0.7",
+    "electron-builder": "^22.14.13",
+    "electron-packager": "^15.4.0",
     "html-webpack-plugin": "^5.5.0",
     "prettier": "^2.5.1",
     "style-loader": "^3.3.1",
@@ -45,5 +39,12 @@
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
     "styled-components": "^5.3.3"
+  },
+  "build": {
+    "linux": {
+      "target": "AppImage",
+      "asar": false,
+      "icon": "./icon.png"
+    }
   }
 }

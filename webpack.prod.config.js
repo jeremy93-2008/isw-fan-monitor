@@ -3,13 +3,12 @@ const path = require('path')
 const CopyPlugin = require('copy-webpack-plugin')
 
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     entry: {
         main: './src/main/main.js',
         preload: './src/main/preload.js',
         webapp: './src/app/index.tsx',
     },
-    devtool: 'source-map',
     target: 'electron-main',
     output: {
         filename: '[name].js',
